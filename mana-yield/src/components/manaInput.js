@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import './../css/app.css';
 import './../css/mana.css';
 
-class TextInput extends Component {
+import ManaCost from './manaCost.js';
+
+class ManaInput extends Component {
   constructor() {
     super();
     this.state = {
@@ -132,9 +134,10 @@ class TextInput extends Component {
     return (
       <div>
         <input type='text' value={ar} onChange={this._handleIt} />
+        <ManaCost costArray={this.state.manaArray} />
       </div>
     );
   }
 }
 
-export default TextInput;
+export default ManaInput;
