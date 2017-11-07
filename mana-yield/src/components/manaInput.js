@@ -15,7 +15,7 @@ class ManaInput extends Component {
     this._handleIt = this._handleIt.bind(this);
   }
 
-  _appendGenericSymbol = function(symbol, array) {
+  _append2GenericSymbol = function(symbol, array) {
     console.log('generic');
     let generic;
     if (array.length > 0) {
@@ -32,25 +32,6 @@ class ManaInput extends Component {
     }
     else {
       array.unshift(symbol);
-    }
-    return array;
-  };
-
-  _appendColorSymbol = function(symbol, array) {
-    console.log('color');
-    if (array.length === 0) {
-      array.push(symbol);
-    }
-    else {
-      for (let i = array.length - 1; i >= 0; i--) {
-        if (this._colorOrder(symbol) >= this._colorOrder(array[i])) {
-          array.splice(i + 1, 0, symbol);
-          break;
-        }
-        else if (i === 0) {
-          array.unshift(symbol);
-        }
-      }
     }
     return array;
   };
@@ -72,7 +53,79 @@ class ManaInput extends Component {
     }
   };
 
+  _appendGenericSymbol = function(symbol, genericString) {
+    console.log('generic');
+    let newGenericString = genericString + symbol;
+    let newGenericTotal = parseInt(newGenericString, 10);
+    if (newGenericTotal > 20 || newGenericTotal < 1) {
+      //validation failed
+      return null;
+    }
+    return newGenericString;
+  };
+
+  _appendColorSymbol = function(symbol, array) {
+    console.log('color');
+    let symbolOrder = this._colorOrder(symbol);
+    if (symbolOrder === 0) {
+      //validation failed
+      return null;
+    }
+    else if (array.length === 0) {
+      array.push(symbol);
+    }
+    else {
+      for (let i = array.length - 1; i >= 0; i--) {
+        if (symbolOrder >= this._colorOrder(array[i])) {
+          array.splice(i + 1, 0, symbol);
+          break;
+        }
+        else if (i === 0) {
+          array.unshift(symbol);
+        }
+      }
+    }
+    return array;
+  };
+
+  _validateManaInput = function(inputArray) {
+    let genericMana = '';
+    let outputArray = [];
+    //let inputArray = event.target.value.split('');
+    inputArray.forEach(function(character) {
+      //let digit = parseInt(character, 10);
+      if (parseInt(character, 10)) {
+        genericMana = ManaInput._appendGenericSymbol(character, genericMana);
+        if (genericMana === null) {
+          //validation failed
+          return null;
+        }
+      }
+      else {
+        outputArray = ManaInput._appendColorSymbol(character, outputArray);
+        if (outputArray === null) {
+          //validation failed
+          return null;
+        }
+      }
+    });
+    if (genericMana.length > 0) {
+      outputArray.unshift(genericMana);
+    }
+    return outputArray;
+  };
+
   _handleIt = function(event) {
+    let inputArray = event.target.value.split('');
+    let outputArray = this._validateManaInput(inputArray);
+    if (outputArray !== null) {
+      this.setstate({
+        manaArray: outputArray
+      });
+    }
+  };
+
+  _handle2It = function(event) {
     let manaArray = this.state.manaArray;
     let typeSequenceArray = this.state.typeSequenceArray;
     console.log(event);
