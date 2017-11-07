@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  //background-color: #995533;
 }
 
 .App-logo {
@@ -20,6 +21,17 @@
 
 .App-intro {
   font-size: large;
+}
+
+.mana-button {
+	cursor: pointer;
+	border-radius: 12px;
+	//background-color: #995533;
+	//border-color: #995533;
+}
+
+.text-input {
+	margin: 15px;
 }
 
 @keyframes App-logo-spin {

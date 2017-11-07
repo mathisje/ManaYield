@@ -6,10 +6,11 @@ const ManaCost = function(props) {
   return (
     <div>
       {
-        props.costArray.map((symbol) => {
+        props.costArray.map((symbol, index) => {
           return (
-            <i className={'ms ms-' + symbol + ' ms-cost ms-shadow ms-2x'}
-                style={style}/>
+            <i key={index}
+               className={'ms ms-' + symbol + ' ms-cost ms-shadow ms-2x'}
+               style={style} />
           )
         })
       }

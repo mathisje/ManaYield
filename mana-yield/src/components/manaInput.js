@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import './../css/app.css';
-import './../css/mana.css';
 
+import ManaButton from './manaButton.js';
 import ManaCost from './manaCost.js';
 
 class ManaInput extends Component {
@@ -31,8 +30,7 @@ class ManaInput extends Component {
     }
   };
 
-  _appendGenericSymbol = (symbol, genericString) => {
-    console.log('generic');
+  _validateGenericSymbol = (symbol, genericString) => {
     let newGenericString = genericString + symbol;
     let newGenericTotal = parseInt(newGenericString, 10);
     if (newGenericTotal > 20 || newGenericTotal < 1) {
@@ -42,8 +40,7 @@ class ManaInput extends Component {
     return newGenericString;
   };
 
-  _appendColorSymbol = (symbol, array) => {
-    console.log('color');
+  _validateColorSymbol = (symbol, array) => {
     let symbolOrder = this._colorOrder(symbol);
     if (symbolOrder === 0) {
       //validation failed
@@ -71,11 +68,11 @@ class ManaInput extends Component {
     let outputArray = [];
     let valid = inputArray.every((character) => {
       if (!isNaN(parseInt(character, 10))) {
-        genericMana = this._appendGenericSymbol(character, genericMana);
+        genericMana = this._validateGenericSymbol(character, genericMana);
         return genericMana !== null;
       }
       else {
-        outputArray = this._appendColorSymbol(character, outputArray);
+        outputArray = this._validateColorSymbol(character, outputArray);
         return outputArray !== null;
       }
     });
@@ -90,8 +87,7 @@ class ManaInput extends Component {
     }
   };
 
-  _handleInput = (event) => {
-    let inputArray = event.target.value.split('');
+  _handleInput = (inputArray) => {
     let outputArray = this._validateManaInput(inputArray);
     if (outputArray !== null) {
       this.setState({
@@ -100,12 +96,55 @@ class ManaInput extends Component {
     }
   };
 
+  _appendColorSymbol = (symbol) => {
+    let inputArray = this.state.manaArray;
+    inputArray.push(symbol);
+    this._handleInput(inputArray);
+  };
+
+  _incrementGenericSymbol = () => {
+    let outputArray = this.state.manaArray;
+    let genericNumber = parseInt(outputArray[0], 10);
+    if (isNaN(genericNumber)) {
+      outputArray.unshift('1');
+    }
+    else {
+      if (genericNumber < 20) {
+        genericNumber++;
+      }
+      outputArray[0] = (genericNumber + '');
+    }
+    this.setState({
+      manaArray: outputArray
+    });
+  };
+
   render() {
-    let arr = this.state.manaArray;
-    let ar = arr.join('');
+    let manaArrayText = this.state.manaArray.join('');
     return (
       <div>
-        <input type='text' value={ar} onChange={this._handleInput} />
+        <div>
+          <ManaButton symbol='1'
+                      handleClick={() => this._incrementGenericSymbol()} />
+          <ManaButton symbol='w'
+                      handleClick={() => this._appendColorSymbol('w')} />
+          <ManaButton symbol='u'
+                      handleClick={() => this._appendColorSymbol('u')} />
+          <ManaButton symbol='b'
+                      handleClick={() => this._appendColorSymbol('b')} />
+          <ManaButton symbol='r'
+                      handleClick={() => this._appendColorSymbol('r')} />
+          <ManaButton symbol='g'
+                      handleClick={() => this._appendColorSymbol('g')} />
+        </div>
+        <input type='text'
+               value={manaArrayText}
+               onChange={(e) => this._handleInput(e.target.value.toLowerCase().split(''))}
+               className='text-input'
+               autoComplete="off"
+               autoCorrect="off"
+               autoCapitalize="off"
+               spellCheck="false" />
         <ManaCost costArray={this.state.manaArray} />
       </div>
     );

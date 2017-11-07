@@ -3,7 +3,6 @@ import logo from './resources/logo.svg';
 import './css/app.css';
 import './css/mana.css';
 
-import ManaCost from './components/manaCost.js';
 import ManaInput from './components/manaInput.js'
 
 class App extends Component {
