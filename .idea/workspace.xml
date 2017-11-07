@@ -17,7 +17,7 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mana-yield/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
+            <state relative-caret-position="68">
               <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -39,7 +39,7 @@
       <file leaf-file-name="manaCost.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mana-yield/src/components/manaCost.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="289">
               <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -51,7 +51,7 @@
       <file leaf-file-name="addNewManaCost.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mana-yield/src/components/addNewManaCost.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
+            <state relative-caret-position="374">
               <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -63,8 +63,8 @@
       <file leaf-file-name="manaInput.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mana-yield/src/components/manaInput.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
-              <caret line="65" column="0" lean-forward="true" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+            <state relative-caret-position="544">
+              <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -77,6 +77,10 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>textinput</find>
+      <find>ManaInput</find>
+      <find>console</find>
+      <find>//</find>
+      <find>_handleIt</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -136,8 +140,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane" />
     </panes>
   </component>
@@ -146,7 +150,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="SearchEverywhereHistoryKey" value="manain&#9;FILE&#9;file://D:/GitHub/ManaYield/mana-yield/src/components/manaInput.js&#10;text&#9;FILE&#9;file://D:/GitHub/ManaYield/mana-yield/src/components/textInput.js&#10;addn&#9;FILE&#9;file://D:/GitHub/ManaYield/mana-yield/src/components/addNewManaCost.js&#10;app&#9;FILE&#9;file://D:/GitHub/ManaYield/mana-yield/src/app.js&#10;mana&#9;FILE&#9;file://D:/GitHub/ManaYield/mana-yield/src/components/manaCost.js&#10;components&#9;FILE&#9;file://D:/GitHub/ManaYield/mana-yield/src/components/components.js&#10;manacos&#9;FILE&#9;file://D:/GitHub/ManaYield/mana-yield/src/components/manaCost.js&#10;add&#9;FILE&#9;file://D:/GitHub/ManaYield/mana-yield/src/components/addNewManaCost.js&#10;index&#9;FILE&#9;file://D:/GitHub/ManaYield/mana-yield/src/index.js" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
   </component>
   <component name="RunDashboard">
@@ -177,11 +181,12 @@
       <workItem from="1508639597462" duration="45000" />
       <workItem from="1508639674410" duration="30467000" />
       <workItem from="1509938309047" duration="8134000" />
+      <workItem from="1510027577524" duration="6442000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38646000" />
+    <option name="totallyTimeSpent" value="45088000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -215,6 +220,54 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/mana-yield/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mana-yield/src/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mana-yield/src/components/manaCost.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mana-yield/src/components/addNewManaCost.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mana-yield/src/components/manaInput.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="65" column="0" lean-forward="true" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mana-yield/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -253,27 +306,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mana-yield/src/components/textInput.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mana-yield/src/components/textInput.js" />
     <entry file="file://$PROJECT_DIR$/mana-yield/src/components/addCost.js" />
     <entry file="file://$PROJECT_DIR$/mana-yield/src/components/components.js" />
-    <entry file="file://$PROJECT_DIR$/mana-yield/src/components/textInput.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mana-yield/src/components/textInput.js" />
     <entry file="file://$PROJECT_DIR$/mana-yield/src/components/addNewManaCost.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
+        <state relative-caret-position="374">
           <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
@@ -283,7 +322,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mana-yield/src/components/manaCost.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
+        <state relative-caret-position="289">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -293,7 +332,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mana-yield/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
+        <state relative-caret-position="68">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -311,8 +350,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mana-yield/src/components/manaInput.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="65" column="0" lean-forward="true" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+        <state relative-caret-position="544">
+          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

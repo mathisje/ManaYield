@@ -12,31 +12,9 @@ class ManaInput extends Component {
       typeSequenceArray: [],
       value: ''
     };
-    this._handleIt = this._handleIt.bind(this);
   }
 
-  _append2GenericSymbol = function(symbol, array) {
-    console.log('generic');
-    let generic;
-    if (array.length > 0) {
-      generic = parseInt(array[0], 10);
-    }
-    if (generic) {
-      let newNumber = parseInt(array[0] + symbol, 10);
-      if (newNumber > 20 || newNumber < 1) {
-        return [];
-      }
-      else {
-        array[0] = newNumber.toString();
-      }
-    }
-    else {
-      array.unshift(symbol);
-    }
-    return array;
-  };
-
-  _colorOrder = function(symbol) {
+  _colorOrder = (symbol) => {
     switch (symbol) {
       case 'w':
         return 1;
@@ -53,7 +31,7 @@ class ManaInput extends Component {
     }
   };
 
-  _appendGenericSymbol = function(symbol, genericString) {
+  _appendGenericSymbol = (symbol, genericString) => {
     console.log('generic');
     let newGenericString = genericString + symbol;
     let newGenericTotal = parseInt(newGenericString, 10);
@@ -64,7 +42,7 @@ class ManaInput extends Component {
     return newGenericString;
   };
 
-  _appendColorSymbol = function(symbol, array) {
+  _appendColorSymbol = (symbol, array) => {
     console.log('color');
     let symbolOrder = this._colorOrder(symbol);
     if (symbolOrder === 0) {
@@ -88,97 +66,38 @@ class ManaInput extends Component {
     return array;
   };
 
-  _validateManaInput = function(inputArray) {
+  _validateManaInput = (inputArray) => {
     let genericMana = '';
     let outputArray = [];
-    //let inputArray = event.target.value.split('');
-    inputArray.forEach(function(character) {
-      //let digit = parseInt(character, 10);
-      if (parseInt(character, 10)) {
-        genericMana = ManaInput._appendGenericSymbol(character, genericMana);
-        if (genericMana === null) {
-          //validation failed
-          return null;
-        }
+    let valid = inputArray.every((character) => {
+      if (!isNaN(parseInt(character, 10))) {
+        genericMana = this._appendGenericSymbol(character, genericMana);
+        return genericMana !== null;
       }
       else {
-        outputArray = ManaInput._appendColorSymbol(character, outputArray);
-        if (outputArray === null) {
-          //validation failed
-          return null;
-        }
+        outputArray = this._appendColorSymbol(character, outputArray);
+        return outputArray !== null;
       }
     });
-    if (genericMana.length > 0) {
-      outputArray.unshift(genericMana);
+    if (valid){
+      if (genericMana.length > 0) {
+        outputArray.unshift(genericMana);
+      }
+      return outputArray;
     }
-    return outputArray;
+    else {
+      return null;
+    }
   };
 
-  _handleIt = function(event) {
+  _handleInput = (event) => {
     let inputArray = event.target.value.split('');
     let outputArray = this._validateManaInput(inputArray);
     if (outputArray !== null) {
-      this.setstate({
+      this.setState({
         manaArray: outputArray
       });
     }
-  };
-
-  _handle2It = function(event) {
-    let manaArray = this.state.manaArray;
-    let typeSequenceArray = this.state.typeSequenceArray;
-    console.log(event);
-    console.log(event.target);
-    console.log(event.target.value);
-    let checkArray = manaArray.slice();
-    let check = checkArray.join('');
-    if (event.target.value.length < check.length) {
-      console.log('do delete');
-      let q = event.target.value.split('');
-      if (q.length > 1 && parseInt(q[1], 10)) {
-        let temp = q[0] + q[1];
-        q.splice(0,2,temp);
-      }
-      manaArray = q;
-    }
-    else {
-      let lastChar = event.target.value.split('').pop();
-      console.log(lastChar);
-      let lastNum = parseInt(lastChar, 10);
-      if (lastNum) {
-        let updateArray = this._appendGenericSymbol(lastNum.toString(), manaArray);
-        if (updateArray.length > 0) {
-          manaArray = updateArray;
-          typeSequenceArray.push(lastChar);
-        }
-      }
-      else if ( lastChar === 'w' ||
-        lastChar === 'u' ||
-        lastChar === 'b' ||
-        lastChar === 'r' ||
-        lastChar === 'g' ) {
-        manaArray = this._appendColorSymbol(lastChar, manaArray);
-        typeSequenceArray.push(lastChar);
-      }
-    }
-    this.setState({
-      manaArray: manaArray,
-      typeSequenceArray: typeSequenceArray
-    });
-
-/*    let value = parseInt(event.target.value, 10);
-    if (value) {
-      //console.log(value);
-      this.setState({
-        value: value
-      });
-    }
-    else {
-      this.setState({
-        value: ''
-      });
-    }*/
   };
 
   render() {
@@ -186,7 +105,7 @@ class ManaInput extends Component {
     let ar = arr.join('');
     return (
       <div>
-        <input type='text' value={ar} onChange={this._handleIt} />
+        <input type='text' value={ar} onChange={this._handleInput} />
         <ManaCost costArray={this.state.manaArray} />
       </div>
     );
