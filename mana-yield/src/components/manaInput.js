@@ -146,6 +146,10 @@ class ManaInput extends Component {
                autoCapitalize="off"
                spellCheck="false" />
         <ManaCost costArray={this.state.manaArray} />
+        <button className='add-mana-cost-button'
+                onClick={() => this.props.handleAddClick(this.state.manaArray)} >
+          add
+        </button>
       </div>
     );
   }

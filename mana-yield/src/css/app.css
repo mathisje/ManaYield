@@ -23,6 +23,12 @@
   font-size: large;
 }
 
+.add-mana-cost-button {
+	margin: 15px;
+	cursor: pointer;
+	border-radius: 12px;
+}
+
 .mana-button {
 	cursor: pointer;
 	border-radius: 12px;
