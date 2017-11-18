@@ -76,7 +76,7 @@ class ManaInput extends Component {
         return outputArray !== null;
       }
     });
-    if (valid){
+    if (valid) {
       if (genericMana.length > 0) {
         outputArray.unshift(genericMana);
       }
@@ -119,11 +119,18 @@ class ManaInput extends Component {
     });
   };
 
+  _handleAddClick = () => {
+    this.props.addToDeck(this.state.manaArray);
+    this.setState({
+      manaArray: []
+    })
+  };
+
   render() {
     let manaArrayText = this.state.manaArray.join('');
     return (
       <div>
-        <div>
+        <div className='mana-input-row'>
           <ManaButton symbol='1'
                       handleClick={() => this._incrementGenericSymbol()} />
           <ManaButton symbol='w'
@@ -137,19 +144,23 @@ class ManaInput extends Component {
           <ManaButton symbol='g'
                       handleClick={() => this._appendColorSymbol('g')} />
         </div>
-        <input type='text'
-               value={manaArrayText}
-               onChange={(e) => this._handleInput(e.target.value.toLowerCase().split(''))}
-               className='text-input'
-               autoComplete="off"
-               autoCorrect="off"
-               autoCapitalize="off"
-               spellCheck="false" />
-        <ManaCost costArray={this.state.manaArray} />
-        <button className='add-mana-cost-button'
-                onClick={() => this.props.handleAddClick(this.state.manaArray)} >
-          add
-        </button>
+        <div className='mana-input-row'>
+          <button className='add-remove-button'
+                  onClick={() => this._handleAddClick()} >
+            +
+          </button>
+          <input type='text'
+                 value={manaArrayText}
+                 onChange={(e) => this._handleInput(e.target.value.toLowerCase().split(''))}
+                 className='text-input'
+                 autoComplete="off"
+                 autoCorrect="off"
+                 autoCapitalize="off"
+                 spellCheck="false" />
+        </div>
+        <div className='dynamic-mana-container'>
+          <ManaCost costArray={this.state.manaArray} />
+        </div>
       </div>
     );
   }

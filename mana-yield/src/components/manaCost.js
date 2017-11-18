@@ -4,7 +4,7 @@ import './../css/mana.css';
 const ManaCost = function(props) {
   let style = {padding:'1px',margin:'2px'};
   return (
-    <div>
+    <div className='mana-cost'>
       {
         props.costArray.map((symbol, index) => {
           return (
