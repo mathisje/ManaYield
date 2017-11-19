@@ -162,7 +162,7 @@ class ManaInput extends Component {
           <ManaCost costArray={this.state.manaArray} />
         </div>
       </div>
-    );
+    )
   }
 }
 

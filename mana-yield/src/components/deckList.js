@@ -15,10 +15,6 @@ class DeckList extends Component {
     };
   }
 
-  _countChanged = (x) => {
-    //console.log(x);
-  };
-
   render() {
     return (
       <div className='deck-list'>
@@ -31,15 +27,16 @@ class DeckList extends Component {
                         onClick={() => this.props.removeFromDeck(index)} >
                   -
                 </button>
-                <CardCount defaultValue={spell.count}
-                           handleChange={(e) => this.props.countChanged(e.target.value, index)} />
+                <CardCount inputValue={spell.count}
+                           handleChange={this.props.countChanged}
+                           index={index} />
                 <ManaCost costArray={spell.manaCost} />
               </div>
             )
           })
         }
       </div>
-    );
+    )
   }
 }
 
