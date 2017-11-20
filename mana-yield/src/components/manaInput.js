@@ -9,18 +9,22 @@ class ManaInput extends Component {
   constructor() {
     super();
     this.state = {
-      manaArray: [],
-      typeSequenceArray: [],
-      value: ''
+      manaArray: []
     };
   }
 
-  _appendManaSymbol = (symbol) => {
+  _addColorSymbol = (symbol) => {
+    let inputArray = this.state.manaArray.slice();
+    inputArray.push(symbol);
+    this._handleInput(inputArray);
+  };
+
+  _addManaSymbol = (symbol) => {
     if (symbol === '1') {
       this._incrementGenericSymbol();
     }
     else {
-      this._appendColorSymbol(symbol);
+      this._addColorSymbol(symbol);
     }
   };
 
@@ -41,15 +45,42 @@ class ManaInput extends Component {
     }
   };
 
-  _validateGenericSymbol = (symbol, genericString) => {
-    let newGenericString = genericString + symbol;
-    let newGenericTotal = parseInt(newGenericString, 10);
-    if (newGenericTotal > 20 || newGenericTotal < 1) {
-      //validation failed
-      return null;
+  _handleAddClick = () => {
+    if (this.state.manaArray.length > 0) {
+      this.props.addToDeck(this.state.manaArray);
     }
-    return newGenericString;
+    this.setState({
+      manaArray: []
+    })
   };
+
+  _handleInput = (inputArray) => {
+    let newManaArray = this._validateManaInput(inputArray);
+    if (newManaArray !== null) {
+      this.setState({
+        manaArray: newManaArray
+      });
+    }
+  };
+
+  _incrementGenericSymbol = () => {
+    let newManaArray = this.state.manaArray.slice();
+    let genericNumber = parseInt(newManaArray[0], 10);
+    if (isNaN(genericNumber)) {
+      newManaArray.unshift('1');
+    }
+    else {
+      if (genericNumber < 20) {
+        genericNumber++;
+      }
+      newManaArray[0] = (genericNumber + '');
+    }
+    this.setState({
+      manaArray: newManaArray
+    });
+  };
+
+  //these validation functions are candidates for refactor to fit the clean arrow function style standards of the rest of the app. More in the readme
 
   _validateColorSymbol = (symbol, array) => {
     let symbolOrder = this._colorOrder(symbol);
@@ -72,6 +103,16 @@ class ManaInput extends Component {
       }
     }
     return array;
+  };
+
+  _validateGenericSymbol = (symbol, genericString) => {
+    let newGenericString = genericString + symbol;
+    let newGenericTotal = parseInt(newGenericString, 10);
+    if (newGenericTotal > 20 || newGenericTotal < 1) {
+      //validation failed
+      return null;
+    }
+    return newGenericString;
   };
 
   _validateManaInput = (inputArray) => {
@@ -98,59 +139,17 @@ class ManaInput extends Component {
     }
   };
 
-  _handleInput = (inputArray) => {
-    let outputArray = this._validateManaInput(inputArray);
-    if (outputArray !== null) {
-      this.setState({
-        manaArray: outputArray
-      });
-    }
-  };
-
-  _appendColorSymbol = (symbol) => {
-    let inputArray = this.state.manaArray;
-    inputArray.push(symbol);
-    this._handleInput(inputArray);
-  };
-
-  _incrementGenericSymbol = () => {
-    let outputArray = this.state.manaArray;
-    let genericNumber = parseInt(outputArray[0], 10);
-    if (isNaN(genericNumber)) {
-      outputArray.unshift('1');
-    }
-    else {
-      if (genericNumber < 20) {
-        genericNumber++;
-      }
-      outputArray[0] = (genericNumber + '');
-    }
-    this.setState({
-      manaArray: outputArray
-    });
-  };
-
-  _handleAddClick = () => {
-    if (this.state.manaArray.length > 0) {
-      this.props.addToDeck(this.state.manaArray);
-    }
-    this.setState({
-      manaArray: []
-    })
-  };
-
   render() {
-    let manaArrayText = this.state.manaArray.join('');
     return (
       <div>
         <ManaPalette containerClass='mana-input-row'
                      palette={['1','w','u','b','r','g']}
-                     paletteHandler={this._appendManaSymbol} />
+                     paletteHandler={this._addManaSymbol} />
         <div className='mana-input-row'>
           <ButtonComponent buttonClass='add-remove-button'
                            buttonIcon='+'
                            clickHandler={this._handleAddClick} />
-          <ManaTextInput controlledValue={manaArrayText}
+          <ManaTextInput controlledValue={this.state.manaArray.join('')}
                          handleChange={this._handleInput} />
         </div>
         <div className='dynamic-mana-container'>

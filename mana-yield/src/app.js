@@ -5,9 +5,6 @@ import './css/mana.css';
 import DeckGenerator from './components/deckGenerator.js'
 
 class App extends Component {
-  //constructor() {
-  //  super();
-  //}
 
   render() {
     return (

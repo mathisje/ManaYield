@@ -1,5 +1,4 @@
 import React from 'react';
-import './../css/mana.css';
 
 const ManaCost = function(props) {
   let style = {padding:'1px',margin:'2px'};

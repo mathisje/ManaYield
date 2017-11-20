@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import './../css/app.css';
-import './../css/mana.css';
 
 import ButtonComponent from "./buttonComponent";
 import ManaCost from './manaCost.js';
