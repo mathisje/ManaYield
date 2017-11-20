@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 
-import ManaButton from './manaButton.js';
+import ButtonComponent from "./buttonComponent";
 import ManaCost from './manaCost.js';
+import ManaTextInput from './manaTextInput.js';
+import ManaPalette from "./manaPalette";
 
 class ManaInput extends Component {
   constructor() {
@@ -12,6 +14,15 @@ class ManaInput extends Component {
       value: ''
     };
   }
+
+  _appendManaSymbol = (symbol) => {
+    if (symbol === '1') {
+      this._incrementGenericSymbol();
+    }
+    else {
+      this._appendColorSymbol(symbol);
+    }
+  };
 
   _colorOrder = (symbol) => {
     switch (symbol) {
@@ -120,7 +131,9 @@ class ManaInput extends Component {
   };
 
   _handleAddClick = () => {
-    this.props.addToDeck(this.state.manaArray);
+    if (this.state.manaArray.length > 0) {
+      this.props.addToDeck(this.state.manaArray);
+    }
     this.setState({
       manaArray: []
     })
@@ -130,33 +143,15 @@ class ManaInput extends Component {
     let manaArrayText = this.state.manaArray.join('');
     return (
       <div>
+        <ManaPalette containerClass='mana-input-row'
+                     palette={['1','w','u','b','r','g']}
+                     paletteHandler={this._appendManaSymbol} />
         <div className='mana-input-row'>
-          <ManaButton symbol='1'
-                      handleClick={() => this._incrementGenericSymbol()} />
-          <ManaButton symbol='w'
-                      handleClick={() => this._appendColorSymbol('w')} />
-          <ManaButton symbol='u'
-                      handleClick={() => this._appendColorSymbol('u')} />
-          <ManaButton symbol='b'
-                      handleClick={() => this._appendColorSymbol('b')} />
-          <ManaButton symbol='r'
-                      handleClick={() => this._appendColorSymbol('r')} />
-          <ManaButton symbol='g'
-                      handleClick={() => this._appendColorSymbol('g')} />
-        </div>
-        <div className='mana-input-row'>
-          <button className='add-remove-button'
-                  onClick={() => this._handleAddClick()} >
-            +
-          </button>
-          <input type='text'
-                 value={manaArrayText}
-                 onChange={(e) => this._handleInput(e.target.value.toLowerCase().split(''))}
-                 className='text-input'
-                 autoComplete="off"
-                 autoCorrect="off"
-                 autoCapitalize="off"
-                 spellCheck="false" />
+          <ButtonComponent buttonClass='add-remove-button'
+                           buttonIcon='+'
+                           clickHandler={this._handleAddClick} />
+          <ManaTextInput controlledValue={manaArrayText}
+                         handleChange={this._handleInput} />
         </div>
         <div className='dynamic-mana-container'>
           <ManaCost costArray={this.state.manaArray} />

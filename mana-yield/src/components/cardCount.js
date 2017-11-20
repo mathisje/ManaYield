@@ -15,12 +15,12 @@ class CardCount extends Component {
     newCount = !isNaN(newCount) ? newCount : 0;
 
     if (newCount > -1 && newCount < 100) {
-      this.props.handleChange(newCount, this.props.index);
+      this.props.changeHandler(newCount, this.props.handlerParams);
     }
   };
 
   _handleOnInput = (e) => {
-    if (e.target.value === '' && !this.props.inputValue) {
+    if (e.target.value === '' && !this.props.controlledValue) {
       this.setState({renderFlag: !this.state.renderFlag});
     }
   };
@@ -32,8 +32,8 @@ class CardCount extends Component {
   };
 
   render() {
-    let keyValue = this.props.index + '' + this.state.renderFlag;
-    let displayValue = this.props.inputValue > 0 ? this.props.inputValue : '';
+    let keyValue = this.props.handlerParams + '' + this.state.renderFlag;
+    let displayValue = this.props.controlledValue > 0 ? this.props.controlledValue : '';
 
     return (
       <input key={keyValue}
