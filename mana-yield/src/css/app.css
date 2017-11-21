@@ -1,28 +1,5 @@
-.App {
-  //text-align: center;
-  //background-color: #995533;
-  //height: 100%;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  //background-color: #222;
-  height: 30px;
-  margin-left: 25px;
-  //padding: 20px;
-  color: #222;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
+.about {
+	margin: 15px;
 }
 
 .add-remove-button {
@@ -34,6 +11,7 @@
 	text-align: center;
 	line-height: 25px;
 	cursor: pointer;
+	background-color: #fff;
 	border-radius: 16px;
 }
 
@@ -51,9 +29,12 @@
 
 .container {
     border: 0.5px solid #999;
-	//background-color: #FFF;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	margin: 15px;
+}
+
+.content-container {
+	//width: 100%;
 }
 
 .deck-list {
@@ -65,11 +46,15 @@
 	margin: 0px 0px 5px 10px;
 }
 
+.empty-tab {
+	border-bottom: 0.5px solid #999;
+	width: 100%;
+}
+
 .mana-button {
 	cursor: pointer;
 	border-radius: 5px;
-	//background-color: #995533;
-	//border-color: #995533;
+	background-color: #fff;
 }
 
 .mana-cost {
@@ -82,11 +67,35 @@
 	margin: 10px 10px 0px 10px;
 }
 
-.text-input {
-	margin: 10px;
+.tab-header {
+  background-color: #999;
+  cursor: pointer;
+  height: 25px;
+  min-width: 80px;
+  padding: 0px 20px 10px 20px;
+  color: #fff;
+  border: 0.5px solid #333;
+  border-left: none;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.tab-header-selected {
+  cursor: pointer;
+  height: 25px;
+  min-width: 80px;
+  padding: 0px 20px 10px 20px;
+  border: 0.5px solid #333;
+  border-left: none;
+  border-bottom: none;
+}
+
+.tab-row-class {
+	display: flex;
+}
+
+.tab-title {
+  font-size: 1em;
+}
+
+.text-input {
+	margin: 10px;
 }
