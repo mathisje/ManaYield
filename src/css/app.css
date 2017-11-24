@@ -1,0 +1,101 @@
+.about {
+	margin: 15px;
+}
+
+.add-remove-button {
+	height: 32px;
+	width: 32px;
+	min-width: 32px;
+	font-size: 24px;
+	margin: 5px 0px 0px 0px;
+	text-align: center;
+	line-height: 25px;
+	cursor: pointer;
+	background-color: #fff;
+	border-radius: 16px;
+}
+
+.card-count {
+	font-size: 18px;
+	width: 40px;
+	margin: 5px;
+	padding-left: 5px;
+}
+
+.card-row {
+	display: flex;
+	margin: 1px;
+}
+
+.container {
+    border: 0.5px solid #999;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	margin: 15px;
+}
+
+.content-container {
+	//width: 100%;
+}
+
+.deck-list {
+	margin: 10px;
+}
+
+.dynamic-mana-container {
+	min-height: 50px;
+	margin: 0px 0px 5px 10px;
+}
+
+.empty-tab {
+	border-bottom: 0.5px solid #999;
+	width: 100%;
+}
+
+.mana-button {
+	cursor: pointer;
+	border-radius: 5px;
+	background-color: #fff;
+}
+
+.mana-cost {
+	//margin: 2px;
+}
+
+.mana-input-row {
+	display: flex;
+	max-height: 43px;
+	margin: 10px 10px 0px 10px;
+}
+
+.tab-header {
+  background-color: #999;
+  cursor: pointer;
+  height: 25px;
+  min-width: 80px;
+  padding: 0px 20px 10px 20px;
+  color: #fff;
+  border: 0.5px solid #333;
+  border-left: none;
+}
+
+.tab-header-selected {
+  cursor: pointer;
+  height: 25px;
+  min-width: 80px;
+  padding: 0px 20px 10px 20px;
+  border: 0.5px solid #333;
+  border-left: none;
+  border-bottom: none;
+}
+
+.tab-row-class {
+	display: flex;
+}
+
+.tab-title {
+  font-size: 1em;
+}
+
+.text-input {
+	margin: 10px;
+}
