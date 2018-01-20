@@ -51,6 +51,11 @@
 	width: 100%;
 }
 
+.land-label {
+	padding: 4px;
+	margin-top: 5px;
+}
+
 .mana-button {
 	cursor: pointer;
 	border-radius: 5px;

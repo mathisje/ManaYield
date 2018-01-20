@@ -2,36 +2,69 @@ import React, { Component } from 'react';
 
 import DeckList from './deckList.js'
 import ManaInput from './manaInput.js'
+import LandList from "./landList";
 
 class DeckGenerator extends Component {
   constructor() {
     super();
     this.state = {
-      spellArray: []
+      landList: [
+        {
+          type: "Plains",
+          count: 0
+        },
+        {
+          type: "Island",
+          count: 0
+        },
+        {
+          type: "Swamp",
+          count: 0
+        },
+        {
+          type: "Mountain",
+          count: 0
+        },
+        {
+          type: "Forest",
+          count: 0
+        }
+      ],
+      spellList: []
     };
   }
 
   _addNewSpellToDeck = (newManaCost) => {
     let newSpell = this._createNewSpell(newManaCost);
-    let newSpellArray = this.state.spellArray.slice();
-    let newSpellIndex = newSpellArray.findIndex(this._isNewSpellIndex, newSpell);
+    let newSpellList = this.state.spellList.slice();
+    let newSpellIndex = newSpellList.findIndex(this._isNewSpellIndex, newSpell);
     if (newSpellIndex === -1) {
       //if no spell was found for which the new one should be inserted right before it, then it belongs at the end
-      newSpellArray.push(newSpell);
+      newSpellList.push(newSpell);
     }
     else {
-      newSpellArray.splice(newSpellIndex, 0, newSpell);
+      newSpellList.splice(newSpellIndex, 0, newSpell);
     }
     this.setState({
-      spellArray: newSpellArray
+      spellList: newSpellList
     });
   };
 
-  _cardCountChanged = (newCount, index) => {
-    let newSpellArray = this.state.spellArray.slice();
-    newSpellArray[index] = {...this.state.spellArray[index], count: newCount};
+  _landCountChanged = (newCount, index) => {
+    let newLandList = this.state.landList.slice();
+    newLandList[index] = {...this.state.landList[index], count: newCount};
+    console.log(newLandList);
     this.setState({
-      spellArray: newSpellArray
+      landList: newLandList
+    });
+  };
+
+  _spellCountChanged = (newCount, index) => {
+    let newSpellList = this.state.spellList.slice();
+    newSpellList[index] = {...this.state.spellList[index], count: newCount};
+    console.log(newSpellList);
+    this.setState({
+      spellList: newSpellList
     });
   };
 
@@ -181,20 +214,20 @@ class DeckGenerator extends Component {
   };
 
   _removeSpellFromDeck = (index) => {
-    let newSpellArray = this.state.spellArray.slice();
-    newSpellArray.splice(index, 1);
+    let newSpellList = this.state.spellList.slice();
+    newSpellList.splice(index, 1);
     this.setState({
-      spellArray: newSpellArray
+      spellList: newSpellList
     });
   };
 
   render() {
     let deckList;
-    if (this.state.spellArray.length > 0) {
+    if (this.state.spellList.length > 0) {
       deckList = (
         <div className='container'>
-          <DeckList spellList={this.state.spellArray}
-                    countChanged={this._cardCountChanged}
+          <DeckList spellList={this.state.spellList}
+                    countChanged={this._spellCountChanged}
                     removeFromDeck={this._removeSpellFromDeck} />
         </div>
       );
@@ -204,6 +237,10 @@ class DeckGenerator extends Component {
         <div className='container'>
           <ManaInput ref='primaryManaInput'
                      addToDeck={this._addNewSpellToDeck} />
+        </div>
+        <div className='container'>
+          <LandList landList={this.state.landList}
+                    countChanged={this._landCountChanged} />
         </div>
         {deckList}
       </div>

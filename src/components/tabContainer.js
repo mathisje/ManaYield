@@ -39,7 +39,7 @@ class TabContainer extends Component {
   };
 
   componentWillMount() {
-    console.log(this.props);
+    //console.log(this.props);
     let tabArray = this.props.tabList();
     let contentArray  = tabArray.map(this._mapTabToContent);
     this.setState({
