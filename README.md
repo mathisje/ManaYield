@@ -1,3 +1,45 @@
+//state tree
+
+{
+	tabIndex : 0,
+	tabArray? : [],
+	currentManaInput : [],
+	results : [],
+	decklist : {
+		byId : {
+			'1' : {
+				name : 'mountain',
+				count : 20
+			},
+			'2' : {
+				name : 'r'
+				manaCost : ['r'],
+				cmc : 1,
+				colors : 1,
+				count : 1,
+				w : 0,
+				u : 0,
+				b : 0,
+				r : 1,
+				g : 0
+			},
+			'3' : {
+				name : '1rr'
+				manaCost : ['1','r','r'],
+				cmc : 3,
+				colors : 1,
+				count : 2,
+				w : 0,
+				u : 0,
+				b : 0,
+				r : 2,
+				g : 0
+			}
+		},
+		allIds : ['1','2','3']
+	}
+}
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

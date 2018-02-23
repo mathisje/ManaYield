@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import DeckList from './deckList.js'
 import ManaInput from './manaInput.js'
 import LandList from "./landList";
+import ButtonComponent from "./buttonComponent";
 
 class DeckGenerator extends Component {
   constructor() {
@@ -48,6 +49,30 @@ class DeckGenerator extends Component {
     this.setState({
       spellList: newSpellList
     });
+  };
+
+  _calculateManaEfficiency = () => {
+    let myHeaders = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let myInit = {
+      method: 'POST',
+      headers: myHeaders,
+      body: JSON.stringify(this.state.landList.concat(this.state.spellList))
+    };
+
+    fetch('/calculate', myInit)
+      .then(this._calculateRequestHandler)
+      .then(this._calculateResponseHandler);
+  };
+
+  _calculateRequestHandler = (response) => {
+    return response.json();
+  };
+
+  _calculateResponseHandler = (response) => {
+    console.log(response);
   };
 
   _landCountChanged = (newCount, index) => {
@@ -234,6 +259,9 @@ class DeckGenerator extends Component {
     }
     return (
       <div>
+        <ButtonComponent buttonClass='text-button'
+                         buttonText='calculate'
+                         clickHandler={this._calculateManaEfficiency} />
         <div className='container'>
           <ManaInput ref='primaryManaInput'
                      addToDeck={this._addNewSpellToDeck} />
