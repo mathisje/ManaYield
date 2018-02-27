@@ -50,11 +50,6 @@
 	margin: 0px 0px 5px 10px;
 }
 
-.empty-tab {
-	border-bottom: 0.5px solid #999;
-	width: 100%;
-}
-
 .land-label {
 	padding: 4px;
 	margin-top: 5px;
@@ -76,6 +71,15 @@
 	margin: 10px 10px 0px 10px;
 }
 
+.tab-content-container {
+	//width: 100%;
+}
+
+.tab-empty {
+	border-bottom: 0.5px solid #999;
+	width: 100%;
+}
+
 .tab-header {
   background-color: #999;
   cursor: pointer;
@@ -87,6 +91,10 @@
   border-left: none;
 }
 
+.tab-header-container {
+	display: flex;
+}
+
 .tab-header-selected {
   cursor: pointer;
   height: 25px;
@@ -95,10 +103,6 @@
   border: 0.5px solid #333;
   border-left: none;
   border-bottom: none;
-}
-
-.tab-row-class {
-	display: flex;
 }
 
 .tab-title {

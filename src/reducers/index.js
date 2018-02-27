@@ -1,10 +1,16 @@
 import { combineReducers } from 'redux'
-import todos from './todos'
-import visibilityFilter from './visibilityFilter'
+import deckList from './deckList'
+import results from './results'
+import tabArray from './tabArray'
+import tabIndex from './tabIndex'
+import tabStyles from './tabStyles'
 
 const rootReducer = combineReducers({
-  todos,
-  visibilityFilter
+  deckList,
+  results,
+  tabArray,
+  tabIndex,
+  tabStyles
 });
 
 export default rootReducer

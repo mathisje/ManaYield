@@ -1,55 +1,22 @@
-let nextTodoId = 0;
-export const addTodo = text => {
-  return {
-    type: 'ADD_TODO',
-    id: nextTodoId++,
-    text
-  }
-};
-
-export const setVisibilityFilter = filter => {
-  return {
-    type: 'SET_VISIBILITY_FILTER',
-    filter
-  }
-};
-
-export const toggleTodo = id => {
-  return {
-    type: 'TOGGLE_TODO',
-    id
-  }
-};
-
-//nada
-
-export const addSpell = (name) => {
+export const addSpell = (manaCost) => {
   return {
     type: 'ADD_SPELL',
-    id: nextTodoId++,
-    name
+    manaCost
   }
 };
 
-export const changeCount = (name, newCount) => {
+export const changeCount = (id, count) => {
   return {
     type: 'CHANGE_COUNT',
-    name: name,
-    count: newCount,
+    id,
+    count
   }
 };
 
-export const removeSpell = (name) => {
+export const removeSpell = (id) => {
   return {
     type: 'REMOVE_SPELL',
-    name
-  }
-};
-
-export const setManaInput = (manaCost) => {
-  return {
-    type: 'SET_MANA_INPUT',
-    manaCost
+    id
   }
 };
 

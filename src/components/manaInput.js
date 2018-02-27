@@ -47,7 +47,7 @@ class ManaInput extends Component {
 
   _handleAddClick = () => {
     if (this.state.manaArray.length > 0) {
-      this.props.addToDeck(this.state.manaArray);
+      this.props.addSpellHandler(this.state.manaArray);
     }
     this.setState({
       manaArray: []
@@ -141,7 +141,7 @@ class ManaInput extends Component {
 
   render() {
     return (
-      <div>
+      <div className='container'>
         <ManaPalette containerClass='mana-input-row'
                      palette={['1','w','u','b','r','g']}
                      paletteHandler={this._addManaSymbol} />

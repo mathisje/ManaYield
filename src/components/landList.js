@@ -4,15 +4,15 @@ import CardCount from './cardCount.js';
 
 class LandList extends Component {
 
-  _mapLandToDisplay = (land, index) => {
+  mapLandsToDisplay = (land) => {
     return (
-      <div key={index}
+      <div key={land.id}
            className='card-row' >
         <CardCount controlledValue={land.count}
-                   changeHandler={this.props.countChanged}
-                   handlerParams={index} />
+                   changeHandler={this.props.changeCountHandler}
+                   handlerParams={land.id} />
         <div className="land-label">
-          {land.type}
+          {land.id}
         </div>
       </div>
     )
@@ -20,8 +20,10 @@ class LandList extends Component {
 
   render() {
     return (
-      <div className='deck-list'>
-        {this.props.landList.map(this._mapLandToDisplay)}
+      <div className='container'>
+        <div className='deck-list'>
+          {this.props.lands.map(this.mapLandsToDisplay)}
+        </div>
       </div>
     )
   }

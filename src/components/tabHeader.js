@@ -2,16 +2,16 @@ import React, {Component} from 'react';
 
 class TabHeader extends Component {
 
-  _handleTabClick = () => {
+  handleClick = () => {
     this.props.clickHandler(this.props.handlerParams);
   };
 
   render() {
     return (
       <header className={this.props.headerClass}
-              onClick={this._handleTabClick} >
+              onClick={this.handleClick} >
         <h1 className={this.props.titleClass}>
-          {this.props.title}
+          {this.props.headerTitle}
         </h1>
       </header>
     )

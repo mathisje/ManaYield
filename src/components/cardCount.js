@@ -15,7 +15,7 @@ class CardCount extends Component {
     newCount = !isNaN(newCount) ? newCount : 0;
 
     if (newCount > -1 && newCount < 100) {
-      this.props.changeHandler(newCount, this.props.handlerParams);
+      this.props.changeHandler(this.props.handlerParams, newCount);
     }
   };
 
