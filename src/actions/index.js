@@ -26,3 +26,24 @@ export const switchTab = (index) => {
     index
   }
 };
+
+export const resultsRequest = (deckList) => {
+  return {
+    type: 'RESULTS_REQUEST',
+    deckList
+  }
+};
+
+export const resultsSuccess = (manaSpent) => {
+  return {
+    type: 'RESULTS_SUCCESS',
+    manaSpent
+  }
+};
+
+export const resultsFailure = (error) => {
+  return {
+    type: 'RESULTS_FAILURE',
+    error
+  }
+};

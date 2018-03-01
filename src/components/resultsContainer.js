@@ -1,14 +1,25 @@
-import React from 'react';
+import { connect } from 'react-redux'
+import { resultsRequest } from '../actions'
+import Results from './results'
 
-const ResultsContainer = function(props) {
-
-  let placeHolderText = 'PLACEHOLDER';
-
-  return (
-    <div className='about'>
-      {placeHolderText}
-    </div>
-  )
+const mapStateToProps = (state) => {
+  return {
+    deckList: state.deckList,
+    results: state.results
+  }
 };
 
-export default ResultsContainer;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchResultsHandler: (deckList) => {
+      dispatch(resultsRequest(deckList))
+    }
+  }
+};
+
+const ResultsContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Results);
+
+export default ResultsContainer

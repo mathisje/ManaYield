@@ -31,7 +31,11 @@ const initialState = {
     landCount: 0,
     spellCount: 0
   },
-  results: [],
+  results: {
+    error: null,
+    fetching: false,
+    manaSpent: []
+  },
   tabArray: [
     {
       title: 'Deck List',
